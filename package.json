@@ -1,0 +1,11 @@
+{
+	"name": "danni-portfolio",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"start": "npx@11ty/eleventy --serve"
+	},
+	"dependencies": {
+		"@11ty/eleventy": "^2.0.1",
+		"nunjucks": "^3.2.4"
+	}
+}
