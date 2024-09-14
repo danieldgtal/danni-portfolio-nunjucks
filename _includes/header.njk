@@ -45,21 +45,21 @@
 {# Dynamic link highlight #}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Get the current URL path
-    var currentPath = window.location.pathname;
-    // Extract the page name from the path (e.g., '/resume.html' -> 'resume')
-    var currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-
+    // Get the current URL path and normalize it (remove trailing slashes)
+    var currentPath = window.location.pathname.replace(/\/$/, '') || '/index.html';
+    
     // Select all menu items
     var menuItems = document.querySelectorAll('.menu-item');
     
     // Loop through the menu items to find the one that matches the current page
     menuItems.forEach(function(item) {
-      var link = item.querySelector('a').getAttribute('href');
+      var link = item.querySelector('a').getAttribute('href').replace(/\/$/, '');
       if (link === currentPath) {
         item.classList.add('current-menu-item');
       }
     });
   });
 </script>
+
+
 
