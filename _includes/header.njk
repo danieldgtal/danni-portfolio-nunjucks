@@ -9,10 +9,18 @@
     </div>
     <!-- /Text Logo -->
 
+    {# Style to highlight current link #}
+    <style>
+      .current-menu-item {
+        font-weight: bold;
+        color: red; /* Highlight color */
+      }
+    </style>
+
     <!-- Navigation -->
     <div class="site-nav mobile-menu-hide">
       <ul class="leven-classic-menu site-main-menu">
-        <li class="menu-item current-menu-item">
+        <li class="menu-item">
           <a href="/index.html">About Me</a>
         </li>
 
@@ -33,3 +41,25 @@
     <!-- Mobile Menu Toggle -->
   </div>
 </header>
+
+{# Dynamic link highlight #}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the current URL path
+    var currentPath = window.location.pathname;
+    // Extract the page name from the path (e.g., '/resume.html' -> 'resume')
+    var currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+
+    // Select all menu items
+    var menuItems = document.querySelectorAll('.menu-item');
+    
+    // Loop through the menu items to find the one that matches the current page
+    menuItems.forEach(function(item) {
+      var link = item.querySelector('a').getAttribute('href');
+      if (link === currentPath) {
+        item.classList.add('current-menu-item');
+      }
+    });
+  });
+</script>
+
